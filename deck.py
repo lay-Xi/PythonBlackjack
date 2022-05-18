@@ -5,6 +5,7 @@ from card import Card
 class Deck:
     def __init__(self):
         self.cards_in_deck = self.create_deck()
+        self.shuffle()
 
     def create_deck(self):
         deck = []
@@ -14,7 +15,6 @@ class Deck:
                 deck.append(Card(suit, value))
         
         return deck
-
 
     def shuffle(self):
         random.shuffle(self.cards_in_deck)
