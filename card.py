@@ -22,8 +22,9 @@ class Card:
         13: "K"
     }
 
-    def __init__(self):
-        pass
+    def __init__(self, suit, value):
+        self.suit = Card.SUIT_SYMBOLS[suit]
+        self.value = Card.VALUE_NAMES[value]
 
     def __str__(self):
-        pass
+        return f"{self.value}{self.suit}"
