@@ -4,13 +4,25 @@ from card import Card
 
 class Deck:
     def __init__(self):
-        self.cards_in_deck = 
+        self.cards_in_deck = self.create_deck()
 
     def create_deck(self):
-        pass
+        deck = []
+
+        for suit in range(4):
+            for value in range(1, 14):
+                deck.append(Card(suit, value))
+        
+        return deck
+
 
     def shuffle(self):
-        pass
+        random.shuffle(self.cards_in_deck)
 
     def deal(self, num_cards):
-        pass
+        cards_dealt = []
+
+        for _ in range(num_cards):
+            cards_dealt.append(self.cards_in_deck.pop())
+
+        return cards_dealt
