@@ -21,8 +21,8 @@ class Hand:
 
         return value
         
-    def add_to_hand(self, card):
-        self.cards.append(card)
+    def add_to_hand(self, cards_to_add):
+        self.cards.extend(cards_to_add)
 
     def __str__(self):
         hand = ""
