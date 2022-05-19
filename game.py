@@ -15,14 +15,18 @@ class Game:
         
         while (self.dealer.hand.get_value() <= 16):
             self.dealer.hit(self.deck.deal(1))
+            self.dealer.get_str_hand()
+
+            if (self.dealer.hand.get_value() > 16 and self.dealer.hand.get_value() <= 21):
+                print("The dealer stays.")
 
         if (self.dealer.hand.get_value() > 21 or self.dealer.hand.get_value() < self.player.hand.get_value()):
             if (len(self.player.hand.cards) == 2 and self.player.hand.get_value() == 21):
-                print(f"Blackjack! You win ${(self.bet * 1.5):.2f}")
+                print(f"Blackjack! You win ${(self.bet * 1.5):.2f} :)")
                 self.player.update_balance(self.bet * 1.5)
                 print()
             else:
-                print(f"The dealer busts, you win ${self.bet:.2f}")
+                print(f"The dealer busts, you win ${self.bet:.2f} :)")
                 self.player.update_balance(self.bet)
                 print()
         elif (self.dealer.hand.get_value() == self.player.hand.get_value()):
@@ -34,7 +38,7 @@ class Game:
             print()
 
     def start_game(self):
-        answer = input(f"You are starting with {self.player.balance}. Would you like to play a hand? ")
+        answer = input(f"You are starting with ${self.player.balance}. Would you like to play a hand? ")
 
         if answer == "yes":
             while True:
