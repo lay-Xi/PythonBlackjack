@@ -17,8 +17,12 @@ class Game:
             while True:
                 self.bet = float(input("Place your bet: "))
                 if (self.bet > Game.MINIMUM_BET):
-                    break
-                print(f"The minimum bet is ${Game.MINIMUM_BET}")
+                    if (self.bet < self.player.balance): 
+                        break
+                    else:
+                        print("You do not have sufficient funds.")
+                else:
+                    print(f"The minimum bet is ${Game.MINIMUM_BET}")
             
             self.player.hit(self.deck.deal(2))
             self.dealer.hit(self.deck.deal(2))
@@ -29,7 +33,7 @@ class Game:
                 if hit_or_stay == "hit":
                     self.player.hit(self.deck.deal(1))
                     if (self.player.hand.get_value() > 21):
-                        print(f"Your hand value is over 21 and you lose ${self.bet} :(")
+                        print(f"Your hand value is over 21 and you lose ${self.bet:.2f} :(")
                         self.player.update_balance(-self.bet)
                         break
                     else:
