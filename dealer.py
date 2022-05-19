@@ -7,7 +7,12 @@ class Dealer:
     def get_str_hand(self):
         print(f"The dealer has: {self.hand.__str__()}")
 
-    def hit(self, cards):
+    def initial_dealt(self, cards):
         self.hand.add_to_hand(cards)
 
         print(f"The dealer is dealt: {cards[0].__str__()}, Unknown")
+
+    def hit(self, cards):
+        self.hand.add_to_hand(cards)
+
+        print(f"The dealer hits and is dealt: {cards[0].__str__()}")

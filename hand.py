@@ -30,3 +30,6 @@ class Hand:
             hand += f"{card.__str__()}, "
 
         return hand[:-2]
+    
+    def reset_hand(self):
+        self.cards = []
